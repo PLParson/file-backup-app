@@ -7,8 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -48,7 +46,7 @@ public class MainGui extends JFrame {
         GridBagConstraints gbcHeader = new GridBagConstraints();
         pnHeader.setLayout( gbHeader );
 
-        lbInfo = new JLabel( "Please select Policy Type and add initials then click 'Backup'!!!"  );
+        lbInfo = new JLabel( "Please select file and add initials then click 'Backup'!!!"  );
         Font font = new Font("serif", Font.BOLD,20);
         lbInfo.setFont(font);
         gbcHeader.gridx = 3;
@@ -78,12 +76,12 @@ public class MainGui extends JFrame {
         pnSelection.setLayout( gbSelection );
 
         pnTypes = new JPanel();
-        pnTypes.setBorder( BorderFactory.createTitledBorder( "Policy Types" ) );
+        pnTypes.setBorder( BorderFactory.createTitledBorder( "Files" ) );
         GridBagLayout gbTypes = new GridBagLayout();
         GridBagConstraints gbcTypes = new GridBagConstraints();
         pnTypes.setLayout( gbTypes );
 
-        lbTypesInfo = new JLabel( "Select Policy to be backed up"  );
+        lbTypesInfo = new JLabel( "Select file to be backed up"  );
         gbcTypes.gridx = 0;
         gbcTypes.gridy = 0;
         gbcTypes.gridwidth = 1;
@@ -95,7 +93,7 @@ public class MainGui extends JFrame {
         gbTypes.setConstraints( lbTypesInfo, gbcTypes );
         pnTypes.add( lbTypesInfo );
 
-        String []dataPolicyTypes = { "--", "--", "--", "--", "--", "--" };
+        String []dataPolicyTypes = { "--", "bitmapfile", "excelfile", "textfile", "wordfile"};
         cmbPolicyTypes = new JComboBox<>(dataPolicyTypes);
         gbcTypes.gridx = 0;
         gbcTypes.gridy = 1;
@@ -265,7 +263,7 @@ public class MainGui extends JFrame {
         gbcFooter.anchor = GridBagConstraints.EAST;
         gbFooter.setConstraints( btnExit, gbcFooter );
         pnFooter.add(btnExit);
-        lbCredits = new JLabel("\u00a9 2019 Autonet RTP Development v1.0");
+        lbCredits = new JLabel("\u00a9 2019 Pierre-Lloyd Parson v1.0");
         gbcFooter.gridx = 1;
         gbcFooter.gridy = 2;
         gbcFooter.gridwidth = 1;
@@ -335,7 +333,7 @@ public class MainGui extends JFrame {
         btnExit.addActionListener(evt -> System.exit(1));
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("Backup Live Deloyment");
+        setTitle("Backup Files");
         setSize(700, 250);
         setLocationRelativeTo(null);
         setVisible(true);

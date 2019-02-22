@@ -22,11 +22,10 @@ public class Backup {
 
     private static String filename(String type) {
         switch (type) {
-            case "1": return "";
-            case "2": return "";
-            case "3": return "";
-            case "4": return "";
-            case "5": return "";
+            case "bitmapfile": return "bitmapfile.bmp";
+            case "excelfile": return "excelfile.xlsx";
+            case "textfile": return "textfile.txt";
+            case "wordfile": return "wordfile.docx";
         }
         return type;
     }
@@ -50,12 +49,12 @@ public class Backup {
 
     public static String backup(String initials, String type) {
         try {
-            Path newPath = Paths.get("Z:\\IT\\RTP\\Production\\LiveRTP\\"+CurrentDate(initials, type));
+            Path newPath = Paths.get("C:\\backups\\"+CurrentDate(initials, type));
             Files.createDirectories(newPath);
-            File source = new File("Z:\\IT\\RTP\\Production\\LiveUploadDownload\\"+filename(type));
+            File source = new File("C:\\files\\"+filename(type));
             File dest = new File(newPath+"\\"+filename(type));
             Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.COPY_ATTRIBUTES);
-            return dest.getPath().toString();
+            return dest.getPath();
         } catch (ParseException e) {
             return e.getMessage();
         } catch (IOException e) {
